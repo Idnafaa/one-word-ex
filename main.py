@@ -29,6 +29,8 @@ def validate(word: str) -> str:
         raise ValueError("entry must not be blank")
     if any(ch.isspace() for ch in cleaned):
         raise ValueError("entry must be exactly one word, no spaces")
+    if not cleaned.isalpha():
+        raise ValueError("entry must be letters only, no punctuation or digits")
     if not 1 <= len(cleaned) <= 24:
         raise ValueError("entry must be 1 to 24 characters")
     return cleaned
